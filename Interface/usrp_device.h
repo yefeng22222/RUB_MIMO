@@ -31,7 +31,6 @@ public:
     std::string id;
     std::string dev_type;
     std::string product;
-    unsigned int mode;
     double tx_gain;
     double rx_gain;
     double center_freq;
@@ -40,15 +39,19 @@ public:
     unsigned int nbr_of_nullcarriers;
     double prefix_length;
     double training_sequences;
-    unsigned int modulation_type;
+    std::string subdev_spec;
 
+    unsigned int modulation_type;
+    // TX OR RX
+    unsigned int mode;
     bool attached;
 
 
     /// Functions:
     ///
-    // Reconstructor, for a device, that is attached and saved in config
-    void reconstruct(uhd::device_addr_t dev_adress);
+
+    // Construct a Device from uhd address
+    void construct_from_uhd (uhd::device_addr_t dev_address);
 
     // Returns Parameter in a JSON String
     Json::Value to_json_string();
@@ -63,8 +66,8 @@ private:
 
     /// Functions
 
-    // Construct a Device from uhd address
-    void construct_from_uhd (uhd::device_addr_t dev_address);
+    // Get the Standart Subdevice Specifications
+    char * get_standard_subdev();
 
 };
 

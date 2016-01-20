@@ -26,7 +26,8 @@
 #define MODE_TX_BEAMFORMING 4
 
 // Device Type
-#define RX_DEV
+#define TX_DEV 0
+#define RX_DEV 1
 
 
 // Macro for converting to String
@@ -53,4 +54,3 @@ typedef struct {
 
 
 #endif // TYPES_H
-

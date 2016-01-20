@@ -88,7 +88,7 @@ void * MainWindow::update_attached_device_list()
             // If found, update Adress and Name
             avaliable = devices.at(p).serial.compare(temp.substr(temp.find("serial=")+7));
             if (avaliable == 0)
-            {devices.at(p).reconstruct(dev_addrs.at(i)); break;}
+            {devices.at(p).construct_from_uhd(dev_addrs.at(i)); break;}
         }
 
         // Else add the Device to the end of the vector
@@ -327,17 +327,14 @@ void MainWindow::reconfig_devs()
 void MainWindow::on_run_button_clicked()
 {
     print_to_log("Processing...\n");
-//    parameter->fs = ui->fs->text().toInt();
-//    parameter->fc = ui->fc->text().toInt();
-//    parameter->tx_dev_id = ui->tx_dev_id->currentText().toStdString();
-//    parameter->tx_dev_id = ui->tx_dev_id->currentText().toStdString();
+    reconfig_devs();
 
     ///TODO:
     /// Execute real Communitcation
     /// actually only a Dummy
-    std::string result = execute("cp -r /mnt/Sascha/*.dat /tmp/");
-    print_to_log(result);
-    get_data();
+    //std::string result = execute("cp -r /mnt/Sascha/*.dat /tmp/");
+    //print_to_log(result);
+    //get_data();
 
     const_rx_1->computed = true;
     const_rx_2->computed = true;
